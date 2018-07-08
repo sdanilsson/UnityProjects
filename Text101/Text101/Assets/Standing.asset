@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7145da51cc45a456a9763d5c156c2a56, type: 3}
+  m_Name: Standing
+  m_EditorClassIdentifier: 
+  storyText: 'On your feet your head clears and you a door with a keypad next to it.
+
+
+    choices are.
+
+    1. Investigate the keypad
+
+    2. Investigate the door
+
+    3 Randomly push keys and hope something happens'
+  nextStates:
+  - {fileID: 11400000, guid: 22e19436588df46a0812fbfdb8ab39d0, type: 2}
+  - {fileID: 11400000, guid: 149972578fc7b4ae6933e3ffac94d7b9, type: 2}
+  - {fileID: 11400000, guid: 0dc1ef340e50c4dc6879cf3645d52fac, type: 2}
