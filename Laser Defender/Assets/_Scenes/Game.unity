@@ -575,6 +575,7 @@ MonoBehaviour:
   width: 11
   height: 6.23
   speed: 5
+  projectileSpeed: 0
 --- !u!4 &2051274928
 Transform:
   m_ObjectHideFlags: 0

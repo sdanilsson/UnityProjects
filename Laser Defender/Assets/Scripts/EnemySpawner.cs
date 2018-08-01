@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour {
     private bool movingRight = true;
     private float xmax;
     private float xmin;
+    public float projectileSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +50,7 @@ public class EnemySpawner : MonoBehaviour {
         } else if (rightEdgeOfFormation > xmax){
             movingRight = false;
         }
+
 
 
 		
