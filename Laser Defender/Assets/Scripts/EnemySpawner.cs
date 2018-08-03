@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour {
     private float xmax;
     private float xmin;
     public float projectileSpeed;
+    public float spawnDelay = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +22,7 @@ public class EnemySpawner : MonoBehaviour {
         xmax = rightBoundary.x;
         xmin = leftBoundary.x;
 
-
-        foreach ( Transform child in this.transform){
-            GameObject enemy = Instantiate<GameObject>(enemyPrefab, child.transform.position, Quaternion.identity);
-            enemy.transform.parent = child;    
-        }
+        SpawnUntilFull();
 	}
 
     public void OnDrawGizmos()
@@ -51,8 +48,44 @@ public class EnemySpawner : MonoBehaviour {
             movingRight = false;
         }
 
-
-
-		
+        if (AllMembersDead()){
+            SpawnUntilFull();
+        }
+            
 	}
+
+    Transform NextFreePosition(){
+        foreach (Transform childPositionGameObject in transform)
+        {
+            if (childPositionGameObject.childCount == 0)
+            {
+                return childPositionGameObject;
+            }
+        }
+        return null;
+    }
+
+    bool AllMembersDead(){
+        foreach (Transform childPositionGameObject in transform){
+            if (childPositionGameObject.childCount > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void SpawnUntilFull(){
+        Transform freePosition = NextFreePosition();
+        if(freePosition){
+            GameObject enemy = Instantiate<GameObject>(enemyPrefab, freePosition.position, Quaternion.identity);
+            enemy.transform.parent = freePosition;    
+        }
+
+        if (NextFreePosition()){
+            Invoke("SpawnUntilFull", spawnDelay);    
+        }
+
+
+    }
+        
 }
